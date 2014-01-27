@@ -22,6 +22,10 @@ char xApiKey[49] = "CAhdALe5DFe3xjtcUTdFk0HqWAOwB8xCM3tiLsZqaBVen0zS";
 //byte data[Mirf.payload]; // data buffer - unused currently
 //float data; // recieved data
 
+String gprs_apn = "openroamer.com";
+String gprs_user = "o2wap";
+String gprs_pwd = "password";
+
 void setup(){
   
   //setup GSM driver pins
@@ -261,13 +265,19 @@ void enableGPRS() {
   Serial.println("AT+SAPBR=3,1,\"CONTYPE\",\"GPRS\"");  //Set bearer connection type
   delay(2000);
   
-  Serial.println("AT+SAPBR=3,1,\"APN\",\"wap.cingular\"");  //set bearer mode
+  Serial.print("AT+SAPBR=3,1,\"APN\",\"");
+  Serial.print(gprs_apn);
+  Serial.println("\"");  //set bearer mode
   delay(2000);
   
-  Serial.println("AT+SAPBR=3,1,\"USER\",\"wap@cingulargprs.com\"");  //set bearer user
+  Serial.print("AT+SAPBR=3,1,\"USER\",\"");
+  Serial.print(gprs_user);
+  Serial.println("\"");  //set bearer user
   delay(2000);
   
-  Serial.println("AT+SAPBR=3,1,\"PWD\",\"cingular1\"");  //Set bearer pass
+  Serial.print("AT+SAPBR=3,1,\"PWD\",\"");
+  Serial.print(gprs_pwd);
+  Serial.println("\"");  //Set bearer pass
   delay(2000);
 }
 
